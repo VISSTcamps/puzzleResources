@@ -1,0 +1,139 @@
+title Thanh Proto - Marching Enemies
+author Thanh
+(sample prototype - not final code)
+
+verbose_logging
+
+realtime_interval 0.5 (run commands using realtime clock)
+
+========
+OBJECTS
+========
+
+Background
+green lightgreen
+00000
+01000
+00001
+00000
+00010
+
+Player
+pink purple
+.000.
+.111.
+.111.
+.111.
+.111.
+
+Wall
+brown lightbrown
+00000
+10101
+00000
+10101
+00000
+
+PlayerTemp
+pink lightred
+.000.
+.111.
+.111.
+.111.
+.111.
+
+Exit
+yellow lightgray
+11111
+10001
+10001
+10001
+11111
+
+Enemy1 (one to move left)
+red black
+.000.
+01010
+00100
+01010
+.000.
+
+Enemy2 (one to move right even if they are identical)
+red black
+.000.
+01010
+00100
+01010
+.000.
+
+PointA (makes it see-through)
+transparent
+
+PointB
+transparent
+
+
+=======
+LEGEND
+=======
+. = Background
+P = Player
+# = Wall
+E = exit
+M = Enemy1
+N = Enemy2
+A = pointA
+B = PointB
+
+
+=======
+SOUNDS
+=======
+
+================
+COLLISIONLAYERS
+================
+
+Background
+Exit, PointA, PointB (enemies have to overlap with Points)
+Player, Wall, PlayerTemp, Enemy1, Enemy2
+
+
+
+======
+RULES
+======
+
+
+(enemy 1 moves towards invisible point A)
+[ Enemy1 | ... | PointA] -> [ > Enemy1 |... | PointA]
+(when enemy 1 overlaps with point a, replace enemy1 with enemy 2 and leave point a behind)
+[Enemy1 PointA] -> [Enemy2 PointA]
+
+(enemy 2 moves towards invisible point B)
+[ Enemy2 | ... | PointB] -> [ > Enemy2 |... | PointB]
+(when enemy 2 overlaps with point b, replace enemy2 with enemy 1 and leave point b behind)
+[Enemy2 PointB] -> [Enemy1 PointB]
+(this should continuously loop - pacing may speed up/slow down when player makes any movements)
+
+
+
+
+==============
+WINCONDITIONS
+==============
+all exit on Player
+
+=======
+LEVELS
+=======
+(sample arena)
+
+#########
+#a..m..b#
+#.......#
+#.......#
+#.......#
+#.......#
+#..p..e.#
+#########
