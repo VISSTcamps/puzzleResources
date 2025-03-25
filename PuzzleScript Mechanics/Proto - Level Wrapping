@@ -1,0 +1,93 @@
+title Thanh Proto - Level Wrapping
+author Thanh
+(sample prototype - not final code)
+
+verbose_logging
+
+
+========
+OBJECTS
+========
+
+Background
+green lightgreen
+00000
+01000
+00001
+00000
+00010
+
+Player
+pink purple
+.000.
+.111.
+.111.
+.111.
+.111.
+
+Wall
+brown lightbrown
+00000
+10101
+00000
+10101
+00000
+
+
+Exit
+transparent
+
+
+=======
+LEGEND
+=======
+. = Background
+P = Player
+# = Wall
+E = exit
+
+
+=======
+SOUNDS
+=======
+
+================
+COLLISIONLAYERS
+================
+
+Background
+Exit
+Player, Wall
+
+
+
+======
+RULES
+======
+
+[ Exit | < Player | ... | | Exit ] -> [ Exit| | ... | Player | Exit ]
+(Moving Player wanting to move into a Border/exit object will be removed and placed adjacent to the nearest one in the opposite direction.
+Linear, no diagonals.
+)
+
+
+
+==============
+WINCONDITIONS
+==============
+all exit on Player
+
+=======
+LEVELS
+=======
+(sample arena)
+
+################
+#..............#
+#..............#
+#..............#
+e..............e
+#..............#
+#..............#
+#..p...........#
+################
