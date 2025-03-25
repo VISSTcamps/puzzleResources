@@ -1,0 +1,85 @@
+title Thanh Proto - Lava Pits
+author Thanh
+(sample prototype - not final code)
+
+
+========
+OBJECTS
+========
+
+Background
+brown lightbrown gray
+00000
+00010
+20000
+00000
+00001
+
+
+Player
+blue lightblue darkblue
+11111
+10002
+10002
+10002
+22222
+
+Lava
+red yellow
+00000
+01110
+00000
+00011
+10000
+
+Deadplayer
+red lightred darkred
+11111
+10002
+10002
+10002
+22222
+
+GameOver
+transparent
+
+
+=======
+LEGEND
+=======
+. = Background
+p = Player
+l = lava
+
+
+=======
+SOUNDS
+=======
+
+================
+COLLISIONLAYERS
+================
+
+Background
+Lava
+Player, Deadplayer, GameOver
+
+======
+RULES
+======
+[Deadplayer] -> restart
+[player | lava] -> [ deadplayer | lava ]
+
+==============
+WINCONDITIONS
+==============
+
+=======
+LEVELS
+=======
+.......
+.......
+.p..ll.
+....ll.
+.......
+.......

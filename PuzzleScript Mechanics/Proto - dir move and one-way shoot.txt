@@ -1,0 +1,145 @@
+title Thanh Proto - dir move and one-way shoot
+author Thanh
+(referenced from Shoot Crates by Matt)
+
+verbose_logging
+
+realtime_interval 0.1
+throttle_movement
+
+========
+OBJECTS
+========
+
+Background 
+GREEN  
+
+Wall 
+BROWN
+
+Player
+transparent
+
+PlayerSpr
+Blue Black
+00000
+00000
+00001
+00000
+00000
+
+PlayerR 
+Blue Black
+00000
+00000
+00001
+00000
+00000
+
+
+PlayerL
+Blue Black
+00000
+00000
+10000
+00000
+00000
+
+PlayerU
+Blue Black
+00100
+00000
+00000
+00000
+00000
+
+PlayerD
+Blue Black
+00000
+00000
+00000
+00000
+00100
+
+Crate 
+Orange 
+
+Block
+Red
+
+
+
+Bullet
+transparent black
+00000
+00000
+01110
+00000
+00000
+
+=======
+LEGEND
+=======
+
+. = Background
+# = Wall
+P = PlayerSpr and Player
+* = Crate
+B = Block
+
+Players = PlayerR or PlayerL or PlayerU or PlayerD
+
+=======
+SOUNDS
+=======
+
+================
+COLLISIONLAYERS
+================
+
+Background
+Players, PlayerSpr
+Player, Wall, Crate, Bullet, Block
+
+======
+RULES     
+======     
+
+[> Player][PlayerSpr] -> [> Player][> PlayerSpr] 
+(when player moves, player sprite moves with it - needed for initial spawn otherwise will appear invisible)
+
+[> player | wall] -> [stationary player | wall ]
+(if player moves while touching a wall, player stops moving)
+
+(movement stuffs)
+up [> Player] -> [> Player > PlayerU] (move up, show up dir sprite)
+right [> Player] -> [> Player > PlayerR] (move right, show right dir sprite)
+down [> Player] -> [> Player > PlayerD] (move down, show down dir sprite)
+left [> Player] -> [> Player > PlayerL] (move left, show left dir sprite)
+
+
+
+
+(shooting code)
+(can only shoot one direction - unable to switch it at this time)
+right[bullet | Crate] -> [bullet | ] (if bullet hits crate, erase crate but leave bullet)
+right[bullet | Wall] -> [ | Wall] (if bullet hits wall, erase bullet but leave wall)
+right [action player | No Wall] -> [player| bullet] (add bullet to the right of player if not next to a wall)
+[bullet| ] -> [right bullet | ] (bullet moves right)
+
+
+==============
+WINCONDITIONS
+==============
+
+
+=======     
+LEVELS
+=======
+
+############
+#..........#
+#.........*#
+#.p........#
+#..........#
+############

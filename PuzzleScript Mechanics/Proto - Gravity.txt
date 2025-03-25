@@ -1,0 +1,96 @@
+title Thanh Proto - Gravity
+author Thanh
+(mechanical sample, not a game)
+
+verbose_logging
+(
+realtime_interval 0.9)
+========
+OBJECTS
+========
+
+Background
+black
+
+Player
+green
+.000.
+.000.
+.000.
+.000.
+.000.
+
+Ground
+brown
+
+Gravity
+blue
+
+Fall
+blue
+
+Ladder
+lightbrown
+0...0
+00000
+0...0
+00000
+0...0
+
+Climb
+transparent
+
+=======
+LEGEND
+=======
+. = Background
+p = Player
+g = Ground
+l = ladder
+
+obstacles = Ground or ladder
+
+=======
+SOUNDS
+=======
+
+(movement)
+player move 88852907
+
+================
+COLLISIONLAYERS
+================
+
+Background
+Gravity, Ladder
+Player, Ground, Fall, Climb
+
+======
+RULES
+======
+
+
+(Gravity/Fall)
+random late down [ Player | no obstacles ] -> [ | Player ] again
+
+
+(climb ladder)
+[up Player ladder] -> [ ladder up Player]
+
+
+==============
+WINCONDITIONS
+==============
+
+=======
+LEVELS
+=======
+g......
+g......
+g......
+gp.....
+ggg....
+ggg....
+ggg..lg
+ggggggg
+

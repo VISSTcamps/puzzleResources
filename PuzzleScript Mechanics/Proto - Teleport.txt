@@ -1,0 +1,131 @@
+title Thanh Proto - Teleport
+author Thanh
+(sample prototype - not final code)
+
+require_player_movement
+
+========
+OBJECTS
+========
+
+Background
+green lightgreen
+00000
+01000
+00001
+00000
+00010
+
+Player
+pink purple
+.000.
+.111.
+.111.
+.111.
+.111.
+
+Wall
+brown lightbrown
+00000
+10101
+00000
+10101
+00000
+
+TeleportA
+red blue
+00000
+01110
+01110
+01110
+00000
+
+TeleportB
+blue red
+00000
+01110
+01110
+01110
+00000
+
+PlayerTemp
+pink lightred
+.000.
+.111.
+.111.
+.111.
+.111.
+
+Exit
+yellow lightgray
+11111
+10001
+10001
+10001
+11111
+
+=======
+LEGEND
+=======
+. = Background
+P = Player
+# = Wall
+A = TeleportA
+B = TeleportB
+E = exit
+
+portals = TeleportA or TeleportB or Exit
+
+=======
+SOUNDS
+=======
+
+================
+COLLISIONLAYERS
+================
+
+Background
+portals
+Player, Wall, PlayerTemp
+
+======
+RULES
+======
+
+(Player going into A and appearing at B)
+[ > Player | TeleportA][ TeleportB] -> [ | TeleportA][ Player TeleportB]
+(moving player interacts with portal A
+nothing interacting with portal B
+->
+nothing interacting with portal A
+player shows up on portal B)
+
+[ > Player | TeleportB][ TeleportA] -> [ | TeleportB][ Player TeleportA]
+(reverse of the above code)
+
+( divider line equates to things touching, no divider line equates to overlapping)
+
+(
+[> player | portals] -> [ > PlayerTemp | portals]
+late [PlayerTemp TeleportA][TeleportB] -> [TeleportA][Player TeleportB]
+late [PlayerTemp TeleportB][TeleportA] -> [TeleportB][Player TeleportA]
+late [PlayerTemp no portals] -> [Player]
+)
+
+==============
+WINCONDITIONS
+==============
+all exit on Player
+
+=======
+LEVELS
+=======
+(sample arena)
+#########
+#...#..b#
+#...#...#
+#...#...#
+#...#...#
+#...#...#
+#a.p#.e.#
+#########

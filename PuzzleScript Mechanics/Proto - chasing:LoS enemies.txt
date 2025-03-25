@@ -1,0 +1,83 @@
+title Thanh Proto - chasing enemies
+author Thanh
+(mechanical prototype, not a game)
+
+realtime_interval 0.5
+
+
+========
+OBJECTS
+========
+
+Background
+green lightgreen
+00001
+00000
+01000
+00000
+00000
+
+Player
+lightblue blue darkblue
+00000
+01112
+01112
+01112
+22222
+
+Wall
+lightbrown brown darkbrown
+00000
+01112
+01112
+01112
+22222
+
+Enemy
+lightred red darkred
+00000
+01112
+01112
+01112
+22222
+
+=======
+LEGEND
+=======
+. = background
+p = player
+# = wall
+e = enemy
+
+=======
+SOUNDS
+=======
+
+================
+COLLISIONLAYERS
+================
+
+Background
+Player, Enemy, Wall
+
+======
+RULES
+======
+
+[ Enemy | ... | Player ] -> [ > Enemy |... | Player ]
+
+[Enemy | Player ] -> restart
+==============
+WINCONDITIONS
+==============
+
+=======
+LEVELS
+=======
+############
+#........e.#
+#..........#
+#..........#
+#..........#
+#.p........#
+############
