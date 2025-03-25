@@ -1,0 +1,127 @@
+title Colour Swatches - whittinghp
+author Techy Thanh
+
+(1 - mastersystem
+2 - gameboycolour
+3 - amiga
+4 - arnecolors
+5 - famicom
+6 - atari
+7 - pastel
+8 - ega
+9 - amstrad
+10 - proteus_mellow
+11 - proteus_rich
+12 - proteus_night
+13 - c64
+14 - whitingjp)
+
+color_palette whitingjp
+
+========
+OBJECTS
+========
+
+background
+black
+
+player
+black
+
+a
+green
+
+b
+lightgreen
+
+c
+darkgreen
+
+d
+blue
+
+e
+lightblue
+
+f
+darkblue
+
+g
+red
+
+h
+lightred
+
+i
+darkred
+
+j
+brown
+
+k
+lightbrown
+
+l
+darkbrown
+
+m
+gray
+
+n
+lightgray
+
+o
+darkgray
+
+p
+black
+
+q
+white
+
+r
+purple
+
+s
+pink
+
+t
+orange
+
+u
+yellow
+
+
+=======
+LEGEND
+=======
+. = background
+/ = player
+colors = a or b or c or d or e or f or g or h or i or j or k or l or m or n or o or p or q or r or s or t or u
+
+=======
+SOUNDS
+=======
+
+================
+COLLISIONLAYERS
+================
+
+background 
+colors
+player
+
+======
+RULES
+======
+
+==============
+WINCONDITIONS
+==============
+
+=======
+LEVELS
+=======
+abcdefgh
+ijklmnop
+qrstu...
