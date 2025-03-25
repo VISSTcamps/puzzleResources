@@ -5,6 +5,7 @@ author Thanh
 verbose_logging
 
 realtime_interval 0.5 (run commands using realtime clock)
+throttle_movement (limits how fast you can spam movements, hopefully keeps game at consistent speed)
 
 ========
 OBJECTS
